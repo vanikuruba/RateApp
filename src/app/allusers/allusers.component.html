@@ -1,0 +1,40 @@
+<!-- user-list.component.html -->
+<table class="user-table">
+    <thead>
+      <tr>
+        <th>User ID</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Logged In</th>
+        <th>File Name</th>
+        <th>Image</th>
+        <th>Created On</th>
+        <th>Created By</th>
+        <th>Modified On</th>
+        <th>Modified By</th>
+        <th>Role ID</th>
+        <th>Role Name</th>
+        <th>LAN ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users$ | async" class="user-row">
+        <td>{{ user.userId }}</td>
+        <td>{{ user.fullName }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.password }}</td>
+        <td>{{ user.loggedIn }}</td>
+        <td>{{ user.fileName }}</td>
+        <td>{{ user.image }}</td> <!-- Display image as needed -->
+        <td>{{ user.createdOn }}</td>
+        <td>{{ user.createdBy }}</td>
+        <td>{{ user.modifiedOn }}</td>
+        <td>{{ user.modifiedBy }}</td>
+        <td>{{ user.roles.roleId }}</td>
+        <td>{{ user.roles.roleName }}</td>
+        <td>{{ user.lanid }}</td>
+      </tr>
+    </tbody>
+  </table>
+  

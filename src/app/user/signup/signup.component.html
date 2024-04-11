@@ -1,0 +1,50 @@
+<div id="container" class="container" #container>
+  <div class="row">
+    <div class="col align-items-center flex-col sign-up">
+      <div class="form-wrapper align-items-center">
+        <form [formGroup]="registrationForm" >
+          <div class="form sign-up">
+            <div class="input-group">
+              <i class="input-icon  fa-solid fa-user"></i>
+              <input type="text" placeholder="Username" formControlName="fullName" autocomplete="off" required>
+            </div>
+            <div class="input-group">
+              <i class='bx bx-mail-send'></i>
+              <i class="input-icon fa-solid fa-at"></i>
+              <input type="email" placeholder="Email" formControlName="email" autocomplete="off" required>
+            </div>
+            <div class="input-group">
+              <i class="input-icon fa-solid fa-lock"></i>
+              <input type="password" placeholder="Password" formControlName="password" autocomplete="off" required>
+            </div>
+            <button type="button" (click)="onSignUp()">Sign up</button>
+            <p>
+              <span>Already have an account?</span>
+              <b (click)="toggle()" class="pointer">Sign in here</b>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col align-items-center flex-col sign-in">
+      <div class="form-wrapper align-items-center">
+        <form [formGroup]="loginForm">
+          <div class="form sign-in">
+            <div class="input-group">
+              <i class="input-icon fa-solid fa-at"></i>
+              <input type="email" placeholder="Email" formControlName="email" autocomplete="off" required>
+            </div>
+            <div class="input-group">
+              <i class="input-icon fa-solid fa-lock"></i>
+              <input [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="password" autocomplete="off" required>
+              <i class="fa-solid fa-eye" (click)="togglePasswordVisibility()"></i>
+            </div>
+            <button type="button" (click)="onSignIn()">Sign in</button>
+            <p><b>Forgot password?</b></p>
+            <p><span>Don't have an account?</span><b (click)="toggle()" class="pointer">Sign up here</b></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
