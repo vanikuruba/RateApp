@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Bsby } from '../dashboard/bsby/bsbymodel.component';
+import { Bsby } from '../rateform/bsby/bsbymodel.component';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 

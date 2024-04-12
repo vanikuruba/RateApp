@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Sofr } from '../dashboard/sofr/sofrmodel.component';
+import { Sofr } from '../rateform/sofr/sofrmodel.component';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 

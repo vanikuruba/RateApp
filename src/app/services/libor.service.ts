@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Libor } from '../dashboard/libor/libormodel.component';
+import { Libor } from '../rateform/libor/libormodel.component';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 

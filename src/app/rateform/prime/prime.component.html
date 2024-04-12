@@ -1,0 +1,40 @@
+<div>
+  <h1 class="title">Prime component</h1>
+  <form  [formGroup]="primeForm" (ngSubmit)="addPrime()">
+  <div class="container1">
+   
+     <div class="column">
+      <div style=" display: flex; width: 50%;">
+        <label for="bankName" class="label">Bank Name  </label>
+        <span *ngIf="isTitleRequired" class="red-star">*</span>
+      </div>
+      
+      <input type="text" id="bankName" name="bankName" class="form-control" formControlName="bankName">
+     </div>
+     <div class="column">
+      <div style=" display: flex; width: 60%;">
+        <label for="indexNumber" class="label">Index Number</label>
+        <span *ngIf="isTitleRequired" class="red-star">*</span>
+      </div>
+      <input type="number" id="indexNumber" name="indexNumber" class="form-control" formControlName="indexNumber">
+    </div>
+    <div class="column">
+      <div style=" display: flex; width: 30%;">
+        <label for="floor" class="label">Floor:</label>
+      </div>
+      <input type="number" id="floor" name="floor" class="form-control" formControlName="floor">
+      <i class="fa-solid fa-percent"  style="color: #2a2b38; display: flex;flex-direction: column;justify-content: center;"></i>
+    </div>
+    <div class="column">
+      <div style=" display: flex; width: 50%;">
+        <label for="spread" class="label">Spread:</label>
+      </div>
+      
+      <input type="number" id="spread" name="spread" class="form-control" formControlName="spread">
+      <i class="fa-solid fa-percent" style="color: #2a2b38; display: flex;flex-direction: column;justify-content: center;"></i>
+    </div>
+ 
+  </div>
+  <button type="submit" class="btn">Add Prime</button>
+</form>
+</div>

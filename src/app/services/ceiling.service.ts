@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Ceiling } from '../dashboard/ceiling/ceilingmodel.component';
+import { Ceiling } from '../rateform/ceiling/ceilingmodel.component';
 import { Observable } from 'rxjs';
 
 @Injectable({

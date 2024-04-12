@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { PrimeComponent } from '../dashboard/prime/prime.component';
+import { PrimeComponent } from '../rateform/prime/prime.component';
 import { Observable } from 'rxjs';
-import { Prime } from '../dashboard/prime/primemodel.component';
+import { Prime } from '../rateform/prime/primemodel.component';
 @Injectable({
   providedIn: 'root'
 })
