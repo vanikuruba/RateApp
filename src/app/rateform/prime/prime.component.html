@@ -1,16 +1,16 @@
 <div>
   <h1 class="title">Prime component</h1>
-  <form  [formGroup]="primeForm" (ngSubmit)="addPrime()">
+  <form  [formGroup]="primeForm" #userForm="ngForm" >
   <div class="container1">
-   
+    <!-- (ngSubmit)="addPrime()" -->
      <div class="column">
       <div style=" display: flex; width: 50%;">
-        <label for="bankName" class="label">Bank Name  </label>
+        <label  for="bankName" class="label">Bank Name  </label>
         <span *ngIf="isTitleRequired" class="red-star">*</span>
       </div>
       
-      <input type="text" id="bankName" name="bankName" class="form-control" formControlName="bankName">
-     </div>
+      <input #bankNames type="text" id="bankName" name="bankName" class="form-control" formControlName="bankName" >
+    </div>
      <div class="column">
       <div style=" display: flex; width: 60%;">
         <label for="indexNumber" class="label">Index Number</label>
@@ -35,6 +35,7 @@
     </div>
  
   </div>
-  <button type="submit" class="btn">Add Prime</button>
+  <!-- <button type="submit" class="btn">Add Prime</button> -->
 </form>
 </div>
+

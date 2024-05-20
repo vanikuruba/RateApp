@@ -13,14 +13,14 @@ export class RoleListComponent {
 
   constructor(private roleService: UserService) { }
 
-  ngOnInit(): void {
-    this.getRoles();
-  }
+  // ngOnInit(): void {
+  //   this.getRoles();
+  // }
 
-  getRoles() {
-    this.roleService.getAllRoles().subscribe((data: Roles[]) => {
-      this.roles = data;
-    });
-  }
+  // getRoles() {
+  //   this.roleService.getAllRoles().subscribe((data: Roles[]) => {
+  //     this.roles = data;
+  //   });
+  // }
 
 }

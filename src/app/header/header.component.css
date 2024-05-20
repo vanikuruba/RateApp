@@ -1,0 +1,187 @@
+/* @import "~bootstrap/dist/css/bootstrap.min.css"; */
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+
+.menu-bar {
+ 
+    color: #fff;
+    /* background-image: linear-gradient(1deg, #0f7abd, #44b9f3); */
+    background-color: #0056b3;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+  }
+   
+  .system-heading {
+    margin: 0;
+  }
+   
+   
+  .logout-results-container {
+    display: flex;
+    gap: 10px;
+    /* Adjust the gap between buttons */
+    margin-right: 20px;
+   
+  }
+   
+  /* .logout-button {
+    color: white;
+    border: 2px solid white;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 15px;
+    background-color: transparent;
+  } */
+   
+  .results-button {
+    color: white;
+    /* border: 3px solid white; */
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    /* padding: 10px 20px; */
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+  }
+   
+  .logout-button:hover,
+  .results-button:hover {
+    background-color: solidwhite;
+    color: #fff;
+  }
+   
+   
+   
+  .user-circle {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    color: rgb(236, 226, 226);
+    border-radius: 50%;
+    border: 2px solid rgb(230, 225, 225);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin-bottom: 10px; */
+    font-weight: bold;
+   
+   
+   
+  }
+   
+  .user-info {
+    position: absolute;
+    top: 40px;
+    height: 150px;
+    width: 300px;
+    margin-top: 20px;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    /* Center items vertically */
+    align-content: center;
+    justify-content: center;
+    
+   
+   
+  }
+   
+  .profile-user-circle {
+    width: 80px;
+    height: 80px;
+    background-color: transparent;
+    color: black;
+    border-radius: 50%;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-left: -100%;
+
+    /* margin-left: 20px; */
+    /* margin-right: 20px; */
+   
+  }
+   
+  .user-info-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Align items to the start (left) */
+    padding: 5px;
+    margin-top: 29px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -25%;
+   
+  }
+   
+  .user-name {
+    padding: 2px;
+    margin-bottom: 2px;
+    color: black;
+    margin-right: 30px;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+   
+  }
+  .user-name_root{
+      line-height: normal;
+   
+  }
+   
+  .logout-button {
+    background-color: transparent;
+    color: black;
+    font-weight: bold;
+    padding: 8px 16px;
+    cursor: pointer;
+  margin-bottom: 10px;
+  }
+   
+  .logout-button:hover {
+    background-color:  #0f7abd;
+  }
+   
+  .user-profile{
+      opacity: 1;
+      visibility: visible;
+      -webkit-transition-delay: 0s;
+      transition-delay: 0s;
+     
+     
+  }
+  /* Example: Styling tooltip positioned above */
+  /* Example: Custom tooltip styles */
+  .custom-tooltip {
+    padding: 10px;
+    margin-bottom: 2px;
+    color: black;
+    margin-right: 50px;
+    line-height: normal;
+  }
+  /*  */
+.user-name ul {
+    list-style-type: none; /* Remove the default bullet points */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+.dropdown-item {
+    cursor: pointer;
+}
