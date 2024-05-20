@@ -10,10 +10,10 @@ import { BsbyComponent } from './rateform/bsby/bsby.component';
 import { SignupComponent } from './user/signup/signup.component';
 import { RoleListComponent } from './role-list/role-list.component';
 import { AllusersComponent } from './allusers/allusers.component';
-import { RoleassignmentComponent } from './roleassignment/roleassignment.component';
+// import { RoleassignmentComponent } from './roleassignment/roleassignment.component';
 import { RateinfoComponent } from './rateform/rateinfo/rateinfo.component';
 
-const routes: Routes = [ { path: '', redirectTo: 'allroles', pathMatch: 'full' },
+const routes: Routes = [ { path: '', redirectTo: 'home', pathMatch: 'full' },
 { path: 'home', component: SignupComponent},
 {path: 'rateinfo', component:RateinfoComponent},
 {path: 'primeinfo', component:PrimeComponent},
@@ -24,7 +24,7 @@ const routes: Routes = [ { path: '', redirectTo: 'allroles', pathMatch: 'full' }
 {path: 'bsby',component:BsbyComponent},
 {path:'allroles',component:RoleListComponent},
 {path:'allusers',component:AllusersComponent},
-{path:'roleassign',component:RoleassignmentComponent},
+// {path:'roleassign',component:RoleassignmentComponent},
 { path: 'dashboard', component: PreparerdashboardComponent},];
 
 @NgModule({

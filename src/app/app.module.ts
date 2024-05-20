@@ -25,7 +25,11 @@ import { CeilingComponent } from './rateform/ceiling/ceiling.component';
 import { BsbyComponent } from './rateform/bsby/bsby.component';
 import { RoleListComponent } from './role-list/role-list.component';
 import { AllusersComponent } from './allusers/allusers.component';
-import { RoleassignmentComponent } from './roleassignment/roleassignment.component';
+// import { RoleassignmentComponent } from './roleassignment/roleassignment.component';
+import { UserRoleComponent } from './user-role/user-role.component';
+import { UserprofileComponent } from './userprofile/userprofile.component';
+import { UserprofileformComponent } from './userprofileform/userprofileform.component';
+// import { AllUsersComponent } from './all-users/all-users.component';
 
 
 @NgModule({
@@ -43,7 +47,11 @@ import { RoleassignmentComponent } from './roleassignment/roleassignment.compone
     BsbyComponent,
     RoleListComponent,
     AllusersComponent,
-    RoleassignmentComponent
+    // RoleassignmentComponent,
+    UserRoleComponent,
+    UserprofileComponent,
+    UserprofileformComponent,
+    // AllUsersComponent
     
   ],
   imports: [
