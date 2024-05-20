@@ -1,46 +1,122 @@
-<div>
-    <button >New Rate</button>
-  </div>
+  <app-header></app-header>
+
+
+
+
   
+
+   
+<div style="display: flex; margin-top: 6%;" >
   
-  <div class="table-wrapper">
-      <mat-form-field style="position: sticky; top: 0;">
-        <mat-label>Filter</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input >
-      </mat-form-field>
+  <div class="filter-container" >
+    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Search here..."
     
-      <div class="mat-elevation-z8"  >
-        <table mat-table [dataSource]="dataSource" matSort>
+      class="filter-input"
+      #input
+      />
+     
+  </div>
+
+  <div class="filter-container">
+    <div style=" display: flex; flex-direction: row; width: 20%; margin-left: 10%;">
+      <label for="status" class="label">Status : </label>
+    </div>
+    <select style="width: 50%;" id="status" name="status" class="form-control form-select"  placeholder="Status" (change)="onChangeStatus($event)">
+      <option *ngFor="let type of status" [value]="type" style="font-size: small;">{{ type }}</option>
+    </select>
+    </div>
+    <!-- <button type="submit" class="btn btn-primary m-2 " style="border-radius: 4%;" [routerLink]="['/allroles']">User Roles</button>
+    <button class="btn btn-primary m-2" style="border-radius: 4%;" [routerLink]="['/rateinfo']">User Profiles</button>
+    <button class="btn btn-primary m-2" style="border-radius: 4%;" [routerLink]="['/rateinfo']">New Rate</button> -->
+</div>
+
+  <div class="container">
+    <div class="row" >
+        <div class=" col-4" *ngFor="let checkbox of checkboxes">
+            <div class="checkbox-wrapper-1"> 
+              <input [id]="checkbox.id" class="substituted" type="checkbox" aria-hidden="true"  [checked]="checkbox.checked" (change)="toggleCheckbox(checkbox)"/>
+              <label [for]="checkbox.id">{{ checkbox.label }}</label>
+            </div>
+        </div>
+    </div>
+    
+  
+  
+  
+  
+
+</div>
+
+
+
+
+  <div class="table-wrapper">
+      
+
+      
+
+      
+      <!-- <button>User Profile</button> -->
+    
+      <div class="mat-elevation-z8" style="border: aqua;" >
+        <table mat-table [dataSource]="dataSource" matSort  >
     
           <!-- ID Column -->
-          <ng-container matColumnDef="id" style="position: sticky; top:40px;  ">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-            <td mat-cell *matCellDef="let row "> {{row.rateId}} </td>
+          <ng-container matColumnDef="customerName" style="position: sticky; top:40px;  ">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header > Customer Name </th>
+            <td mat-cell *matCellDef="let row "> {{row.customerName}} </td>
           </ng-container>
     
           <!-- Progress Column -->
-          <ng-container matColumnDef="progress">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Full Name </th>
-            <td mat-cell *matCellDef="let row"> {{row.comments}} </td>
+          <ng-container matColumnDef="preparedBy">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Prepared By </th>
+            <td mat-cell *matCellDef="let row"> {{row.preparedBy }} </td>
           </ng-container>
     
           <!-- Name Column -->
-          <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> role </th>
-            <td mat-cell *matCellDef="let row"> {{row.createdBy}} </td>
+          <ng-container matColumnDef="dateOfPrepared">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Date of Prepared </th>
+            <td mat-cell *matCellDef="let row"> {{row.dateOfPrepared | date:'dd/MM/yyyy'}} </td>
           </ng-container>
     
           <!-- Fruit Column -->
-          <ng-container matColumnDef="fruit">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> email </th>
-            <td mat-cell *matCellDef="let row"> {{row.customerName}} </td>
+          <ng-container matColumnDef="obligor">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Obligor </th>
+            <td mat-cell *matCellDef="let row"> {{row.obligor}} </td>
           </ng-container>
+
+          <ng-container matColumnDef="obligations">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Obligations </th>
+            <td mat-cell *matCellDef="let row"> {{row.obligation}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+            <td mat-cell *matCellDef="let row"> {{row.status}} </td>
+          </ng-container>
+
+
   <!-- edit icon -->
           <ng-container matColumnDef="edit">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> edit </th>
-            <td mat-cell *matCellDef="let row"> {{row.customerName}} <i class="input-icon fa-solid fa-at" style="color: #2a2b38;"></i> </td>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>  </th>
+            <td mat-cell *matCellDef="let row">  <i class="fa-solid fa-pen-to-square" role="button" style="color: #2a2b38;"  [routerLink]="['/rateinfo', row.rateId, 'edit']"></i> </td>
           </ng-container>
     
+          <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>  </th>
+            <td mat-cell *matCellDef="let row">  <i class="fa-solid fa-trash-can remove-file-icon" role="button" style="color: red;" (click)="deleteRateInfo(row.rateId)"></i> </td>
+          </ng-container>
+
+          <ng-container matColumnDef="view">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>  </th>
+            <td mat-cell *matCellDef="let row">  <i class=" fa-solid fa-angle-right" role="button" style="color: #2a2b38;" [routerLink]="['/rateinfo', row.rateId,'view']"></i> </td>
+          </ng-container>
+
+
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     
@@ -50,8 +126,9 @@
           </tr>
         </table>
       </div>
-    
-      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users" style="position: sticky; bottom: 0;"></mat-paginator>
+
+      <mat-paginator  showFirstLastButtons [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of rateInfo" style="position: sticky; bottom: 0;" ></mat-paginator>
     </div>
-   
+
     
+    <app-testcomponent></app-testcomponent>

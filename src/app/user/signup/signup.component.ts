@@ -32,12 +32,8 @@ export class SignupComponent{
       password: ['', Validators.required],
     });
   }
-ngOnInit(){
-  this.loginForm = this.formBuilder.group({
-    email: ['', [Validators.required]],
-    password: ['', Validators.required],
-  });
-}
+// ngOnInit(){
+// }
   ngAfterViewInit() {
     const container = this.elementRef.nativeElement.querySelector('.container');
     setTimeout(() => {
@@ -57,13 +53,14 @@ ngOnInit(){
         fullName: this.registrationForm.value.fullName,
         email: this.registrationForm.value.email,
         password: this.registrationForm.value.password,
-        role: 'user',
+        role: 'preparer',
         loggedin: true
       };
 
       this.userService.createUser(userData).subscribe(
         (data) => {
           console.log('User registered successfully:', data);
+          localStorage.setItem('userData', JSON.stringify(data));
           // Redirect to dashboard or handle success
           this.router.navigate(['/dashboard']);
         },
@@ -78,17 +75,20 @@ ngOnInit(){
 
   
   onSignIn() {
+    console.log("sign in method called ")
+    console.log(this.loginForm)
     if (this.loginForm.valid) {
       const userLogin: UserLogin = {
         email: this.loginForm.value.email,
         password: this.loginForm.value.password,
       };
-  
+  console.log(userLogin)
       this.userService.loginUser(userLogin).subscribe(
-        (response) => {
-          console.log('User logged in successfully:', response);
+        (data) => {
+          localStorage.setItem('userData', JSON.stringify(data));
+          console.log('User logged in successfully:', data);
           // Redirect to dashboard or handle success
-          this.router.navigateByUrl('/allusers');
+          this.router.navigateByUrl('/dashboard');
         },
         (error) => {
           console.error('Error logging in:', error);
@@ -99,6 +99,8 @@ ngOnInit(){
     }
 
   }
+
+  
   togglePasswordVisibility() {
     this.hide = !this.hide;
   }

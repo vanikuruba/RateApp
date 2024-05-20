@@ -1,93 +1,274 @@
-<div>
+<!-- <div>
+  <input type='number' #rateId>
+  <button (click)="fetchRateInfo(+rateId.value)">Fetch Rate Info</button>
+</div> -->
+
+<!-- <div *ngIf="rateInfoData" class="background-container"> -->
+<div class="background-container">
   <h1 class="title">LTS New Rate Index Request</h1>
-  <form  [formGroup]="primeForm" (ngSubmit)="addPrime()">
+  <form  [formGroup]="rateInfoForm" >
   <div class="container1">
    
-     <div class="column">
-      <div style=" display: flex; width: 50%;">
-        <label for="preaperdBy" class="label">Prepared By </label>
-        <span *ngIf="isTitleRequired" class="red-star">*</span>
-      </div>
-      
-      <input type="text" id="preaperdBy" name="preaperdBy" class="form-control" formControlName="preaperdBy">
-     </div>
+    <div class="row" style="display: flex; flex-direction: column;">
+      <div class="column">
+        <div style=" display: flex; width: 50%;">
+          <label for="preparedBy" class="label">Prepared By </label>
+          <span *ngIf="isTitleRequired" class="red-star"> * </span>
+        </div>
+        <input type="text" id="preparedBy" name="preparedBy" class="form-control" formControlName="preparedBy" [readonly]="viewMode === 'view'">
+      </div >
+        <p class="error-message" *ngIf="rateInfoForm.get('preparedBy')?.invalid && rateInfoForm.get('preparedBy')?.touched">Prepared By field is required </p>
+    </div>
+     
+    
+  
+  
      <div class="column">
       <div style=" display: flex; width: 60%;">
         <label for="dateOfPrepared" class="label">Date Of Prepared</label>
         <span *ngIf="isTitleRequired" class="red-star">*</span>
       </div>
-      <input type="date" id="dateOfPrepared" name="dateOfPrepared" class="form-control" formControlName="dateOfPrepared">
+    
+      <input type="date" id="dateOfPrepared" name="dateOfPrepared" class="form-control" formControlName="dateOfPrepared" [readonly]="viewMode === 'view'" [value]="dateOfPreparedDefaultValue | date:'yyyy-MM-dd'" >
+      <!-- <p >{{dateOfPrepared.value}}</p> -->
     </div>
+
+    <div class="row">
     <div class="column">
       <div style=" display: flex; width: 60%;">
         <label for="customerName" class="label">Customer Name</label>
         <span *ngIf="isTitleRequired" class="red-star">*</span>
       </div>
-      <input type="text" id="customerName" name="customerName" class="form-control" formControlName="customerName">
+      <input type="text" id="customerName" name="customerName" class="form-control" formControlName="customerName" [readonly]="viewMode === 'view'">
     </div>
-    <div class="column">
-      <div style=" display: flex; width: 50%;">
-        <label for="obligor" class="label">Obligor#</label>
-        <span *ngIf="isTitleRequired" class="red-star">*</span>
+    <p class="error-message" *ngIf="rateInfoForm.get('customerName')?.invalid && rateInfoForm.get('customerName')?.touched">Customer Name is required </p>
+    </div>
+
+    <div>
+      <div class="column">
+        <div style=" display: flex; width: 50%;">
+          <label for="obligor" class="label">Obligor#</label>
+          <span *ngIf="isTitleRequired" class="red-star">*</span>
+        </div>
+        <input type="number" id="obligor" name="obligor" class="form-control" formControlName="obligor" #obligorN>
       </div>
-      <input type="number" id="obligor" name="obligor" class="form-control" formControlName="obligor">
+      <!-- <p>{{ rateInfoForm.get('obligor')?.invalid }}</p>
+<p>{{ rateInfoForm.get('obligor')?.touched }}</p>
+<p>{{ rateInfoForm.get('obligor')?.value }}</p> -->
+<p>{{ obligorN.value?.length }}</p>
+      <!-- <p class="error-message" *ngIf="rateInfoForm.get('obligor')?.invalid && rateInfoForm.get('obligor')?.touched && rateInfoForm.get('obligor')?.value.length > 10">Customer Name is required</p> -->
+
     </div>
+    
     <div class="column">
       <div style=" display: flex; width: 60%;">
         <label for="obligations" class="label">Obligation(s)</label>
         <span *ngIf="isTitleRequired" class="red-star">*</span>
       </div>
-      <input type="number" id="obligations" name="obligations" class="form-control" formControlName="obligations">
+      <input type="number" id="obligations" name="obligations" class="form-control" formControlName="obligations" [readonly]="viewMode === 'view'">
     </div>
     <div class="column">
       <div style=" display: flex; width: 60%;">
         <label for="nextBillDate" class="label">Next Interest Bill Due Date</label>
         <span *ngIf="isTitleRequired" class="red-star">*</span>
       </div>
-      <input type="date" id="nextBillDate" name="nextBillDate" class="form-control" formControlName="nextBillDate">
+      <input type="date" id="nextBillDate" name="nextBillDate" class="form-control" formControlName="nextBillDate" [readonly]="viewMode === 'view'"> 
     </div>
     <div class="column">
       <div style=" display: flex; width: 50%;">
         <label for="leadDays" class="label">Lead Days</label>
         <span *ngIf="isTitleRequired" class="red-star">*</span>
       </div>
-      <input type="date" id="leadDays" name="leadDays" class="form-control" formControlName="leadDays">
+      <input type="date" id="leadDays" name="leadDays" class="form-control" formControlName="leadDays" [readonly]="viewMode === 'view'">
     </div>
     
     <div class="column">
       <div style=" display: flex; width: 60%;">
         <label for="status" class="label">Status</label>
       </div>
-      <input  type="text" id="status" name="status" class="form-control" formControlName="status" >
+      <input  type="text" id="status" name="status" class="form-control" formControlName="status" [readonly]=true>
     </div>
  
   </div>
 
-  <!-- <div class="form-group" enctype="multipart/form-data">
-    <label for="file">Attachmnets:</label>
-    
-    <input type="file" id="files" formControlName="files" multiple (change)="onFileChanged($event)" />
-  </div> -->
+ 
 
-  <div class="col-12">
-    <div class="mb-3">
+  <div class="col-12" >
+    <div class="mb-3" *ngIf="viewMode!='view'">
         <label for="attachments" class="form-label">Attachments:</label>
-        <input type="file" class="form-control" id="attachments" multiple (change)="onFileChanged($event)" formControlName="attachments">
-        <small id="attachmentsHelp" class="form-text text-muted">You can attach multiple files.</small>
+        <input type="file" class="form-control" id="attachments"  multiple (change)="onFileSelected($event)"    >
+        <small id="attachmentsHelp" class="form-text text-muted" >You can attach multiple files.</small>
     </div>
-    <div *ngIf="selectedFiles.length > 0" class="mb-3">
-        <label class="form-label">Selected Files:</label>
-        <ul class="list-group">
-            <li *ngFor="let file of selectedFiles; let i = index"
-                class="list-group-item d-flex justify-content-between align-items-center">
-                <span>{{ file.name }}</span>
-                <!-- <span class="ml-2">(Size: {{ formatBytes(file.size) }})</span> -->
-                <span role="button" (click)="removeFile(i)" class="remove-file-icon">&times;</span>
-            </li>
-        </ul>
+  
+    
+  <div *ngIf="selectedFiles.length > 0  && viewMode !='view'" class="mb-3">
+    <label class="form-label">Selected Files:</label>
+    <div class="row">
+        <div *ngFor="let file of selectedFiles; let i = index" class="col-4" style="border-width: 4px; border-color: blue;">
+          <div class="card">
+              <div class="card-body">
+                <span>{{ file.name}}</span>
+                  <i class="fa-solid fa-trash-can remove-file-icon " style="margin-left: 10px;" role="button" (click)="removeFile(i)" ></i>
+              </div>
+          </div>
+      </div>
+
     </div>
 </div>
 
-  <button type="submit" class="btn">Save</button>
-</form>
+<div *ngIf=" viewMode =='edit' || viewMode =='view' " class="mb-3" >
+  <label class="form-label" *ngIf=" viewMode =='view' ">Selected Files:</label>
+  <div class="row">
+      <div *ngFor="let file of this.existedRateInfo?.attachments; let i = index" class="col-4" style="border-width: 4px; border-color: blue;">
+          <div class="card">
+              <div class="card-body">
+                <span>{{ file.fileName}}</span>
+                  <i class="fa-solid fa-trash-can remove-file-icon " style="margin-left: 10px;" role="button" (click)="removeFile(i)" ></i>
+              </div>
+          </div>
+      </div>
+  </div>
 </div>
+
+
+    <h1 class="title">ASF Rate Index Worksheet</h1>
+     <div class="container1">
+    <div class="column">
+      <div style=" display: flex; width: 50%; ">
+        <label for="effectiveDate" class="label">Effective Date Of Note / Agreement </label>
+        <span *ngIf="isTitleRequired" class="red-star"> * </span>
+      </div>
+      
+      <input type="date" id="effectiveDate" name="effectiveDate" class="asfform-control" formControlName="effectiveDate" [readonly]="viewMode === 'view'">
+     </div>
+
+
+     <div class="column">
+      <div style=" display: flex; width: 60%; margin-bottom: 20px;">
+        <label for="assignedApprover" class="label">Assigned Approver</label>
+      </div>
+      <input type="text" id="assignedApprover" name="assignedApprover" class="asfform-control" formControlName="assignedApprover" [readonly]=true>
+    </div>
+
+    <div class="column">
+      <div style=" display: flex; width: 60%; margin-bottom: 20px;">
+        <label for="assignedAnalyst" class="label">Assigned Analyst</label>
+      </div>
+      <input type="text" id="assignedAnalyst" name="assignedAnalyst" class="asfform-control" formControlName="assignedAnalyst" [readonly]=true>
+    </div>
+
+  </div> 
+</div>
+</form>
+<div>
+  <h1 class="title"  *ngIf="viewMode!='edit' && viewMode!='view'">LTS New Rate Index Request</h1>
+
+
+
+<div class="container">
+  <div class="row" *ngIf="!viewMode">
+      <div class=" col-4" *ngFor="let checkbox of checkboxes">
+          <div class="checkbox-wrapper-1"> 
+            <input [id]="checkbox.id" class="substituted" type="checkbox" aria-hidden="true"  [checked]="checkbox.checked" (change)="toggleCheckbox(checkbox)"/>
+            <label [for]="checkbox.id">{{ checkbox.label }}</label>
+          </div>
+      </div>
+  </div>
+</div>
+<div *ngFor="let checkbox of checkboxes" style="margin-top: 2%;">
+  <ng-container *ngIf="checkbox.label === 'Prime Component' && checkbox.checked">
+    <app-prime  ></app-prime> 
+    <!-- (primeAdded)="onPrimeAdded($event)" -->
+  </ng-container>
+
+  <ng-container *ngIf="checkbox.label === 'Federal Funds Component' && checkbox.checked">
+    <app-federal ></app-federal>
+  </ng-container>
+
+  <ng-container *ngIf="checkbox.label === 'LIBOR Comoponent' && checkbox.checked">
+    <app-libor></app-libor>
+  </ng-container>
+
+  <ng-container *ngIf="checkbox.label === 'BSBY Component' && checkbox.checked">
+    <app-bsby></app-bsby>
+  </ng-container>
+
+  <ng-container *ngIf="checkbox.label === 'SOFR Component' && checkbox.checked">
+    <app-sofr></app-sofr>
+  </ng-container>
+
+  <ng-container *ngIf="checkbox.label === 'Rate Includes Overall Floor Or Ceiling' && checkbox.checked">
+    <app-ceiling></app-ceiling>
+  </ng-container>
+
+  
+</div>
+
+<h1 class="title">CRM</h1>
+
+<form [formGroup]="rateInfoForm">
+  <div class="container1">
+  <div class="column">
+    <div style=" display: flex; width: 80%;">
+      <label for="nameOfNewBaseRate" class="label">Name Of The Base Rate</label>
+    </div>
+    <input  type="text" id="nameOfNewBaseRate" name="nameOfNewBaseRate" class="form-control" formControlName="nameOfNewBaseRate" >
+  </div>
+
+<div class="column">
+  <div style=" display: flex; width: 100%;">
+    <label for="assignedIndexNumber" class="label">Assigned Index Number  </label>
+    <span *ngIf="isTitleRequired" class="red-star">*</span>
+  </div>
+  <input id="assignedIndexNumber" name="assignedIndexNumber" rows="4"  class="form-control" formControlName="assignedIndexNumber">
+ </div>
+</div>
+</form>
+
+
+
+
+
+
+<h1 class="title">Request Section</h1>
+<form [formGroup]="rateInfoForm">
+  <div class="column">
+    <div style=" display: flex; width: 12%;">
+      <label for="agreementType" class="label">Agreement Type</label>
+    </div>
+    <select style="width: 30%;" id="agreementType" name="agreementType" class="form-control form-select" formControlName="agreementType" >
+    <option>Part Bought</option>
+    <option>Syndicated</option>
+    <option>Bilateral</option>
+    </select>
+    <!-- <input  type="text" id="agreementType" name="agreementType" class="form-control" formControlName="agreementType" > -->
+  </div>
+  <div class="column" >
+    <div style=" display: flex; width: 13%;">
+      <label for="comments" class="label">Comments History </label>
+    </div>
+    <textarea  id="comments" name="comments" rows="4"  class="form-control" formControlName="comments" ></textarea>
+   </div>
+   
+<div class="column">
+  <div style=" display: flex; width: 13%;">
+    <label for="comments" class="label">Comments  </label>
+    <span *ngIf="isTitleRequired" class="red-star">*</span>
+  </div>
+  <textarea id="comments" name="comments" rows="4"  class="form-control" formControlName="comments"></textarea>
+ </div> 
+ <p *ngIf="rateInfoForm.invalid && rateInfoForm.touched">Please fill all required fields</p>
+
+</form>
+
+<div style="display: flex; flex-direction: row; justify-content: space-between;">
+<button type="submit" class="btn m-2 mt-4" (click)="createRateInfo()" >Save</button>
+<button type="submit" class="btn m-2 mt-4" *ngIf="viewMode === 'edit'">Return For Correction</button>
+<button type="submit" class="btn m-2 mt-4" (click) = "updateRateInfo(rateId)" *ngIf="viewMode === 'edit'">Update </button>
+<button type="submit" class="btn m-2 mt-4" *ngIf="viewMode === 'edit'">Approve</button>
+<button type="submit" class="btn m-2 mt-4" *ngIf="viewMode === 'edit'">New Rate</button>
+<button type="submit" class="btn m-2 mt-4"  [routerLink]="['/dashboard']" >Back</button>
+</div>
+</div>
+</div>
+<!-- </div> -->

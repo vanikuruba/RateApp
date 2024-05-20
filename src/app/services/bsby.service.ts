@@ -14,4 +14,12 @@ export class BsbyService {
   addBsby(bsby: Bsby): Observable<Bsby> {
     return this.http.post<Bsby>(`${this.baseUrl}`, bsby);
   }
+
+  getBsbyByRateId(rateId:number):Observable<any> {
+    return this.http.get<any>(this.baseUrl + `/rateid?rateId=${rateId}`)
+    // http://localhost:1014/stg/project.new_rate_index/api/rateinfo/id?rateId=1
+    }
+    updateBsby(bsbyId:any,updatedBsby: Bsby): Observable<Bsby> {
+      return this.http.post<Bsby>(`${this.baseUrl}`+ `?bsbyId=${bsbyId}`, updatedBsby);
+    }
 }

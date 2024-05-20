@@ -12,9 +12,16 @@ import { RoleListComponent } from './role-list/role-list.component';
 import { AllusersComponent } from './allusers/allusers.component';
 import { RoleassignmentComponent } from './roleassignment/roleassignment.component';
 import { RateinfoComponent } from './rateform/rateinfo/rateinfo.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
 
-const routes: Routes = [ { path: '', redirectTo: 'allroles', pathMatch: 'full' },
-{ path: 'home', component: SignupComponent},
+
+const routes: Routes = [ 
+// { path: '', component:AppComponent },
+{ path: '', redirectTo: 'home', pathMatch: 'full' },
+{ path: 'home', component: HomeComponent},
+{ path: 'signup', component: SignupComponent},
+{path: 'rateinfo/:rateId/:state', component:RateinfoComponent},
 {path: 'rateinfo', component:RateinfoComponent},
 {path: 'primeinfo', component:PrimeComponent},
 {path: 'sofr', component:SofrComponent},
@@ -28,7 +35,7 @@ const routes: Routes = [ { path: '', redirectTo: 'allroles', pathMatch: 'full' }
 { path: 'dashboard', component: PreparerdashboardComponent},];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes),ReactiveFormsModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
