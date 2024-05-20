@@ -3,7 +3,6 @@
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
  
  
- 
 .title {
   text-align: center;
   color:#ffffff;
@@ -11,11 +10,12 @@
   font-size: 20px;
   background-color:#0771d4;
   bottom: 4;
-  padding: 10px;
+  padding: 4px;
 
 
   margin-bottom: 30px; /* Increased spacing below the title */
 }
+
  
  
  
@@ -62,7 +62,7 @@
  
   .container1{
     display: grid;
-    grid-template-columns: 400px 400px 400px;
+    grid-template-columns: 33% 33% 33%;
      text-align: center;
      
     /* width: 20%; */

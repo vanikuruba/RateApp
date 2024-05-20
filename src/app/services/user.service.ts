@@ -51,6 +51,10 @@ export class UserService {
 
   loginUser(userLogin: UserLogin): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<any>(`${this.mainUrl}/login`, userLogin, { headers });
+    return this.http.put<any>(`${this.mainUrl}/login`, userLogin, { headers });
+  }
+  logOutUser(userId:number,userData:any){
+    // http://localhost:1014/stg/project.new_rate_index/api/user/logout?userId=1
+    return this.http.put(this.mainUrl + `/logout?userId=${userId}`, userData)
   }
 }
